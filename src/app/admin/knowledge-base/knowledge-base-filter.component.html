@@ -1,0 +1,72 @@
+<div id="qrtFilter" class="qrt">
+    <div class="qrt-wrapper">
+        <div class="qrt-content">
+            <form class="form-savvy">
+                <div class="qrt-header">
+                    <a href="javascript:;" class="pull-right" data-toggle="qrt" data-target="#qrtFilter" (click)="toggleSideBars('qrtFilter')"><i class="fa fa-remove"></i></a>                    Filters
+                </div>
+                <div class="qrt-body">
+
+                    <div class="form-group">
+                        <label>Knowledge base(s)</label><br>
+                        <select class="form-control">
+                              <option>Select here...</option>
+                              <option>VineForce</option>
+                              <option>BrightPath</option>
+                              <option>Facebook</option>
+                              <option>SnapChat</option>
+                              <option>Instagram</option>
+                            </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Modified By</label><br>
+                        <select class="form-control">
+                              <option>Select here...</option>
+                              <option>Cathy Valdez</option>
+                              <option>Ava Ranara</option>
+                              <option>Jon Pulgar</option>
+                              <option>Cha Maratas</option>
+                              <option>Kairav Suman</option>
+                            </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Modified Date</label>
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label class="label-inline" for="inputStartDate">Start</label>
+                                    <div class="input-icon right">
+                                        <i class="icon-calendar"></i>
+                                        <input type="text" class="form-control" id="inputStartDate" placeholder="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label class="label-inline" for="inputEndDate">End</label>
+                                    <div class="input-icon right">
+                                        <i class="icon-calendar"></i>
+                                        <input type="text" class="form-control" id="inputEndDate" placeholder="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="qrt-footer">
+
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <button type="submit" class="btn btn-block btn-lg green-jungle">Apply Filter</button>
+                        </div>
+                        <div class="col-xs-6">
+                            <button type="reset" class="btn btn-block btn-lg btn-outline grey-salsa"  (click)="toggleSideBars('qrtFilter')" >Reset</button>
+                        </div>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

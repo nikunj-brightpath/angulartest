@@ -1,0 +1,297 @@
+<!--
+<div [busyIf]="loadingData">
+    <div class="grid grid-group grid-tiles">
+        <div class="col span_1_of_5">
+            <div class="thumbnail">
+                <div class="number">{{userCount||0}}</div>
+                <div class="desc">Total User(s)</div>
+            </div>
+        </div>
+        <div class="col span_1_of_5">
+            <div class="thumbnail">
+                <div class="number">{{adminCount||0}}</div>
+                <div class="desc">Admin(s)</div>
+            </div>
+        </div>
+        <div class="col span_1_of_5">
+            <div class="thumbnail">
+                <div class="number">{{agentCount||0}}</div>
+                <div class="desc">Agent(s)</div>
+            </div>
+        </div>
+        <div class="col span_1_of_5">
+            <div class="add-user">
+                <a href="javascript:;" class="thumbnail border-green-jungle font-green-jungle" (click)="addUser('qrtAddUser')">
+                    <div class="fa fa-plus"></div>
+                    <div class="desc">New User</div>
+                </a>
+            </div>
+        </div>
+        <div class="col span_1_of_5">
+            <a href="javascript:;" class="thumbnail bg-green-jungle border-green-jungle bg-font-green-jungle" (click)="toggleSideBars('qrtFilter')">
+                <div class="fa fa-ellipsis-h"></div>
+                <div class="desc">MORE</div>
+            </a>
+        </div>
+    </div>
+
+    <div class="clearfix"></div>
+
+    <div class="grid-users">
+
+        <div class="applied-filters">
+            <a (click)="updateFilterForRole(role)" style="display: inline-block;margin-right: 2px;" href="javascript:;" class="label label-default"
+                *ngFor="let role of filter.roles|pipeSelected">{{role.displayName}}
+                     <span class="fa fa-remove"></span>
+                </a>
+            <a (click)="updateFilterForDate()" style="display: inline-block;margin-right: 2px;" href="javascript:;" class="label label-default"
+                *ngIf="filter.startDate && filter.endDate">
+                    {{filter.startDate| date: 'MMM dd,yyyy'}} to {{filter.endDate|date: 'MMM dd,yyyy'}}
+                    <span class="fa fa-remove"></span>
+                </a>
+        </div>
+        <div class="space15"></div>
+        hii--media-list--{{userData|json}}
+        <ul class="media-list">
+            <li class="media" [ngClass]="{'updating': dat.isEditing}" *ngFor="let dat of userData">
+                <div class="media-body">
+                    <div class="dropdown pull-right">
+                        <button class="btn btn-icon-only dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="true">
+                                    <span class="glyphicon glyphicon-option-vertical fa-lg"></span>
+                                  </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                            <li><a href="javascript:;" data-toggle="qrt" (click)="editUser('qrtAddUser',dat)">Edit</a></li>
+                            <li *ngIf="appSession.userId!=dat.id"><a href="javascript:;" data-toggle="modal" (click)="confirmDeleteUser(dat)">Delete</a></li>
+                        </ul>
+                    </div>
+                    <h4 class="media-heading">
+                        <span class="uname" style="text-transform: capitalize;">{{dat.name}} + {{dat.surName}}</span>
+                        <small>{{(dat.lastModificationTime==null ? dat.creationTime: dat.lastModificationTime) | date: 'yMdjm'}}</small>
+
+                        <span class="label label-admin">{{displayRoleName(dat)}}</span>
+                    </h4>
+                    <ul class="list-inline list-meta">
+                        <li class="email"><a href="#">{{dat.emailAddress}}</a></li>
+                        <li class="phone">{{dat.phoneNumber}}</li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="space40" *ngIf="userData?.length <= 0 && loadingData==false"></div>
+
+<div class="graphic text-center" *ngIf="userData?.length <= 0 && loadingData==false">
+    <div class="crying">
+        <img src="/assets/common/images/crying_450.png">
+    </div>
+    <h4 class="text-uppercase sbold font-grey-silver">I am lonely. please start adding users.</h4>
+</div>
+
+<div class="modal fade" id="deleteConfirmModal" tabindex="-1" role="dialog" aria-labelledby="deleteConfirmModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title text-center" id="deleteConfirmModalLabel">User Deletion Confirmation</h4>
+            </div>
+            <div class="modal-body text-center">
+                Are you sure you want to Delete {{displayRoleName(cUser)}} User <strong>"{{firstName}} {{lastName}}"</strong>                ?
+            </div>
+            <div class="modal-footer">
+                <div class="text-center">
+                    <button type="button" class="btn green-jungle" (click)="deleteUser(userId)">Yes</button>
+                    <button type="button" class="btn btn-outline grey-salsa" data-dismiss="modal" (click)="resetEditableRow()">No</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<createOrEditUserComponent #createOrEditUserComponent (modalSave)="getUsers()" (resetEditableRow)="resetEditableRow()"></createOrEditUserComponent>
+
+<filterUserComponent #filterComponent (filterEvent)="getUsers()"></filterUserComponent>-->
+
+<div class="card grid-kb">
+    <div class="card-header ch-dark palette-purplec-400 bg">
+        <div class="counts row hidden-xs">
+            <div class="col-lg-1 col-sm-2 no-space">
+                <div class="pull-right hidden-sm">
+                    <div class="sparkline-bar-4 cai-chart"></div>
+                </div>
+                <div class="text-center">
+                    <h3 class="m-b-0 m-t-0 c-white">1</h3>
+                    <small class="text-uppercase f-13"> TOTAL USERS</small>
+                </div>
+            </div>
+            <div class="col-lg-1 col-sm-2 no-space">
+                <div class="pull-right hidden-sm">
+                    <div class="sparkline-bar-5 cai-chart"></div>
+                </div>
+                <div class="text-center">
+                    <h3 class="m-b-0 m-t-0 c-white">1</h3>
+                    <small class="text-uppercase f-13">ADMIN(S)</small>
+                </div>
+            </div>
+
+            <div class="col-lg-1 col-sm-2 no-space">
+                <div class="pull-right hidden-sm">
+                    <div class="sparkline-bar-6 cai-chart"></div>
+                </div>
+                <div class="text-center">
+                    <h3 class="m-b-0 m-t-0 c-white">0</h3>
+                    <small class="text-uppercase f-13">AGENT(S)</small>
+                </div>
+            </div>
+
+            <ul class="actions a-alt">  
+                <li data-toggle="tooltip" data-placement="bottom" data-trigger="hover" title="Add User">
+                    <button openSideBar class="actionheader-icon" data-user-alert="sua-notifications" data-ma-action="sidebar-open" data-ma-target="add-User">
+                                            <i class="hm-icon palette-Cyan-600 bg c-white zmdi zmdi-plus zmdi-hc-fw" ></i>
+                                        </button>
+                </li>
+                <li data-toggle="tooltip" data-placement="bottom" data-trigger="hover" title="Filter">
+                    <button class="actionfilter-icon active" data-user-alert="sua-notifications" data-ma-action="sidebar-open" data-ma-target="add-filter">
+                                            <i class="hm-icon zmdi zmdi-sort zmdi-hc-fw" ></i>
+                                        </button>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- <div class="action-header palette-purplec-400 bg clearfix">
+                            <div class="ah-label hidden-xs palette-White text">
+                                
+                                <div class="c-analytics row hidden-xs">
+                                    <div class="col-lg-1 col-sm-2 no-space">
+                                        <div class="ca-item media">
+                                            <div class="pull-right hidden-sm">
+                                                <div class="sparkline-bar-4 cai-chart"></div>
+                                            </div>
+                                            <div class="media-body text-center">
+                                                <h2>9</h2>
+                                                <small class="text-uppercase"> Total</small>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-1 col-sm-2 no-space">
+                                        <div class="ca-item media">
+                                            <div class="pull-right hidden-sm">
+                                                <div class="sparkline-bar-5 cai-chart"></div>
+                                            </div>
+                                            <div class="media-body text-center">
+                                                <h2>3</h2>
+                                                <small class="text-uppercase">Added Today</small>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-1 col-sm-2 no-space">
+                                        <div class="ca-item media">
+                                            <div class="pull-right hidden-sm">
+                                                <div class="sparkline-bar-6 cai-chart"></div>
+                                            </div>
+                                            <div class="media-body text-center">
+                                                <h2>6</h2>
+                                                <small class="text-uppercase">MODIFIED TODAY</small>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-9 col-sm-6">
+                                        <ul class="ah-actions actions a-alt">
+                                            <li data-toggle="tooltip" data-placement="bottom" title="Add Knowledge Base">
+                                                <a class="actionheader-icon" data-toggle="modal" href="#modalAddKnowledgeBase">
+                                                    <i class="palette-Cyan-600 bg zmdi zmdi-plus zmdi-hc-fw" ></i>
+                                                </a>
+                                            </li>
+                                            <li class="dropdown">
+                                                <a href="" data-toggle="dropdown" aria-expanded="true">
+                                                    <i class="zmdi zmdi-sort"></i>
+                                                </a>
+                                                <ul class="dropdown-menu dropdown-menu-right">
+                                                    <li>
+                                                        <a href="">Last Modified</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="">Last Edited</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="">Name</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="">Date</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div> -->
+
+    <div class="list-group lg-alt lg-even-black kb-grid-List kb-tile-select">
+        <div class="list-group-item media">
+            <div class="pull-right">
+                <ul class="actions">
+                    <li class="dropdown m-t-5">
+                        <a href="" data-toggle="dropdown" aria-expanded="false">
+                                                <i class="zmdi zmdi-more-vert palette-Cyan-600 text"></i>
+                                            </a>
+
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            <li>
+                                <a href="javascript:;" data-user-alert="sua-notifications" data-ma-action="sidebar-open" data-ma-target="edit-User" class="f-14">Edit</a>
+                            </li>
+                            <!-- <li>
+                                                    <a href="kb-answer-grid.html" class="f-14">Manage Answers</a>
+                                                </li> -->
+                            <!-- <li>
+                                                    <a href="javascript:;" data-user-alert="sua-notifications" data-ma-action="sidebar-open" data-ma-target="Get-knowledgeWidgetCode" class="f-14">Get Widget Code</a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:;" data-user-alert="sua-notifications" data-ma-action="sidebar-open" data-ma-target="Get-previewWidget" class="f-14">Preview Widget</a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:;" data-user-alert="sua-notifications" data-ma-action="sidebar-open" data-ma-target="Kb-CustomizeWidget" class="f-14">Customize Widget</a>
+                                                </li> -->
+                            <li>
+                                <a href="javascript:;" id="delete-user" class="f-14">Delete</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="pull-left">
+                <img class="avatar-img"  src="/assets/img/profile-pics/3.jpg" alt="">
+            </div>
+            <div class="media-body">
+                <div class="lgi-heading">
+                    <a href="kb-answer-grid.html">
+                        <div class="row">
+                            <div class="col-sm-2 m-b-5">
+                                <h4 class="palette-Grey-900 text f-16">Catherine Valdez</h4>
+                            </div>
+                            <div class="col-sm-2 m-b-5">
+                                <h4 class="palette-Grey-600 text f-16"><i class="zmdi zmdi-email zmdi-hc-fw"></i> cathy@brightpath.consulting</h4>
+                            </div>
+                            <div class="col-sm-2 m-b-5">
+                                <h4 class="palette-Grey-600 text f-16"><i class="zmdi zmdi-phone zmdi-hc-fw"></i> 954 326 7832</h4>
+                            </div>
+                            <div class="col-sm-5 m-b-5">
+                                <h4 class="palette-Grey-600 text f-16 text-right p-r-25">1 hr ago</h4>
+                            </div>
+                            <div class="col-sm-1 m-t-5 m-b-5">
+                                <h4 class="label label-default palette-Grey-600 text f-14 f-400 p-relative label-answer pull-right">ADMIN </h4>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<createOrEditUserComponent #createOrEditUserComponent (modalSave)="getUsers()" (resetEditableRow)="resetEditableRow()"></createOrEditUserComponent>

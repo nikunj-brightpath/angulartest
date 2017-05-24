@@ -1,0 +1,21 @@
+<div class="modal fade" tabindex="-1" id="{{modalId}}">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close"><span>&times;</span></button>
+                <h4 class="modal-title text-center" id="deleteConfirmModalLabel">
+                    {{headerText}}
+                </h4>
+            </div>
+            <div class="modal-body text-center">
+                {{message}}
+            </div>
+            <div class="modal-footer">
+                <div class="text-center">
+                    <button type="button" class="btn green-jungle" (click)="confirm()">{{yesText}}</button>
+                    <button type="button" class="btn btn-outline grey-salsa" (click)="closeModal()">{{noText}}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

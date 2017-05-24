@@ -1,0 +1,39 @@
+<div id="qrtKnldgeBase" class="qrt">
+    <div class="qrt-wrapper">
+        <div class="qrt-content">
+            <form class="form-savvy" (ngSubmit)="save()" #knowledgeBaseForm="ngForm">
+                <div class="qrt-header">
+                    <a href="javascript:;" class="pull-right" (click)="confirmCloseKnowledgeBase()"><i class="fa fa-remove"></i></a>                    Add Knowledge Base
+                </div>
+                <div class="qrt-body">
+                    <div class="form-group has-error">
+                        <label for="inputKBName">Name </label>
+                        <input type="text" class="form-control" id="inputKBName" placeholder="" name="name" [(ngModel)]="model.name" required #kbName="ngModel"
+                            maxlength="25" pattern="^[a-zA-Z0-9 ]*$">
+                        <span class="help-block" *ngIf="kbName.errors && kbName.errors.required && (kbName.dirty || kbName.touched)">
+							Please enter knowledge base name
+                        </span>
+                        <span class="help-block" *ngIf="kbName.errors && kbName.errors.pattern && (kbName.dirty || kbName.touched)">
+                            Only alphanumeric letters are allowed
+                        </span>
+                    </div>
+                </div>
+                <div class="qrt-footer">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <button type="submit" class="btn btn-block btn-lg green-jungle" [disabled]="!knowledgeBaseForm.form.valid || saving">Create</button>
+                        </div>
+                        <div class="col-xs-6">
+                            <button type="button" class="btn btn-block btn-lg btn-outline grey-salsa" data-toggle="qrt" data-target="#qrtKnldgeBase"
+                                (click)="toggleSideBars('qrtKnldgeBase')" [disabled]="saving">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!--/qrtKnldgeBase-->
+
+<confirmModalComponent #confirmModalComponent [headerText]="'Confirmation'" [message]="'Are you sure you want to discard changes?'" [yesText]="'Yes'"
+    [noText]="'No'" (confirmed)="closeAddKnowledgeBase()" [modalId]="'knowledgeBaseConfirm'"></confirmModalComponent>

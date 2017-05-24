@@ -1,0 +1,66 @@
+<div id="qrtFilter" class="qrt">
+    <div class="qrt-wrapper">
+        <div class="qrt-content">
+            <form class="form-savvy">
+                <div class="qrt-header">
+                    <a href="javascript:;" class="pull-right" (click)="toggleSideBars('qrtFilter')"><i class="fa fa-remove"></i></a>                    Filters
+                </div>
+                <div class="qrt-body">
+
+                    <div class="form-group">
+                        <label>Role</label><br>
+                        <label class="checkbox-inline" *ngFor="let role of filter.roles">
+                            <input name="role{{role.id}}" #{{role.id}} type="checkbox"   [(ngModel)]="role.selected"> {{role.displayName}}
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="form-group">
+                                    <label class="label-inline" for="inputStartDate"> Date Range</label>
+                                    <div class="input-icon right">
+                                        <i class="icon-calendar"></i>
+                                        <date-range-picker [(startDate)]="filter.startDate" [(endDate)]="filter.endDate"></date-range-picker>
+                                    </div>
+                                </div>
+                            </div>-
+                            <!--<div class="col-xs-6">
+                                <div class="form-group">
+                                    <label class="label-inline" for="inputStartDate">Start Date</label>
+                                  
+                                    <div class="input-icon right">
+                                        <i class="icon-calendar"></i>
+                                        <input type="date" class="form-control" name="startDate" [(ngModel)]="filter.startDate" id="inputStartDate" placeholder="">
+                                    </div>
+                                </div>
+                            </div>-->
+                            <!--<div class="col-xs-6">
+                                <div class="form-group">
+                                    <label class="label-inline" for="inputEndDate">End Date</label>
+                                    <div class="input-icon right">
+                                        <i class="icon-calendar"></i>
+                                        <input type="date" class="form-control" name="endDate" [(ngModel)]="filter.endDate" id="inputEndDate" placeholder="">
+                                    </div>
+                                </div>
+                            </div>-->
+                        </div>
+                    </div>
+
+                </div>
+                <div class="qrt-footer">
+
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <button type="submit" class="btn btn-block btn-lg green-jungle" (click)="applyFilters()">Apply Filter</button>
+                        </div>
+                        <div class="col-xs-6">
+                            <button type="button" class="btn btn-block btn-lg btn-outline grey-salsa" (click)="resetFilter()">Reset</button>
+                        </div>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!--/qrtFilter-->

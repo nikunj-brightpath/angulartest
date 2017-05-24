@@ -1,0 +1,159 @@
+﻿<div class="page-sidebar-wrapper">
+  <div class="page-sidebar">
+    <!-- DOC: Apply "page-sidebar-menu-light" class right after "page-sidebar-menu" to enable light sidebar menu style(without borders) -->
+    <!-- DOC: Apply "page-sidebar-menu-hover-submenu" class right after "page-sidebar-menu" to enable hoverable(hover vs accordion) sub menu mode -->
+    <!-- DOC: Apply "page-sidebar-menu-closed" class right after "page-sidebar-menu" to collapse("page-sidebar-closed" class must be applied to the body element) the sidebar sub menu mode -->
+    <!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
+    <!-- DOC: Set data-keep-expand="true" to keep the submenues expanded -->
+    <!-- DOC: Set data-auto-speed="200" to adjust the sub menu slide up/down speed -->
+    <ul class="page-sidebar-menu" data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
+      <li class="sidebar-search-wrapper">
+        <!-- BEGIN RESPONSIVE QUICK SEARCH FORM -->
+        <!-- DOC: Apply "sidebar-search-bordered" class the below search form to have bordered search box -->
+        <!-- DOC: Apply "sidebar-search-bordered sidebar-search-solid" class the below search form to have bordered & solid search box -->
+        <form class="sidebar-search sidebar-search-bordered " action="page_general_search_3.html" method="POST">
+          <a href="javascript:;" class="remove">
+            <i class="icon-close"></i>
+          </a>
+          <div class="form-group">
+            <div class="input-icon right">
+              <i class="icon-magnifier"></i>
+              <input class="form-control input-circle" placeholder="Search..." type="text">
+            </div>
+          </div>
+        </form>
+        <!-- END RESPONSIVE QUICK SEARCH FORM -->
+      </li>
+      <ng-template ngFor let-menuItem [ngForOf]="menu.items" let-mainMenuItemIndex="index">
+        <li *ngIf="showMenuItem(menuItem)">
+          <a [routerLink]="[menuItem.route]" *ngIf="!menuItem.items.length">
+            <i *ngIf="!menuItem.icon.includes('/')" class="{{menuItem.icon}}"></i>
+            <img *ngIf="menuItem.icon.includes('/')" src="{{menuItem.icon}}" />
+            <span class="title">{{l(menuItem.name)}}</span>
+          </a>
+          <a href="javascript:;" class="auto" *ngIf="menuItem.items.length">
+            <!--<i class="{{menuItem.icon}}"></i>-->
+            <i *ngIf="!menuItem.icon.includes('/')" class="{{menuItem.icon}}"></i>
+            <img *ngIf="menuItem.icon.includes('/')" src="{{menuItem.icon}}" />
+            <span class="title">{{l(menuItem.name)}}</span>
+            <span class="arrow"></span>
+          </a>
+          <ul class="sub-menu" *ngIf="menuItem.items.length">
+            <!-- Menu Level 2 -->
+            <ng-template ngFor let-childMenuItem [ngForOf]="menuItem.items" let-mainMenuItemIndex="index">
+              <li *ngIf="showMenuItem(childMenuItem)">
+                <a [routerLink]="[childMenuItem.route]" *ngIf="!childMenuItem.items.length">
+                  <!--<i class="{{childMenuItem.icon}}"></i>-->
+                  <i *ngIf="!childMenuItem.icon.includes('/')" class="{{childMenuItem.icon}}"></i>
+                  <img *ngIf="childMenuItem.icon.includes('/')" src="{{childMenuItem.icon}}" />
+                  <span class="title">{{l(childMenuItem.name)}}</span>
+                </a>
+                <a href="javascript:;" class="auto" *ngIf="childMenuItem.items.length">
+                  <!--<i class="{{childMenuItem.icon}}"></i>-->
+                  <i *ngIf="!childMenuItem.icon.includes('/')" class="{{childMenuItem.icon}}"></i>
+                  <img *ngIf="childMenuItem.icon.includes('/')" src="{{childMenuItem.icon}}" />
+                  <span class="title">{{l(childMenuItem.name)}}</span>
+                  <span class="arrow"></span>
+                </a>
+                <ul class="sub-menu" *ngIf="childMenuItem.items.length">
+                  <!-- Menu Level 3 -->
+                  <ng-template ngFor let-childOfChildMenuItem [ngForOf]="childMenuItem.items" let-childOfChildMenuItemIndex="index">
+                    <li *ngIf="showMenuItem(childOfChildMenuItem)">
+                      <a [routerLink]="[childOfChildMenuItem.route]" *ngIf="!childOfChildMenuItem.items.length">
+                        <!--<i class="{{childOfChildMenuItem.icon}}"></i>-->
+                        <i *ngIf="!childOfChildMenuItem.icon.includes('/')" class="{{childOfChildMenuItem.icon}}"></i>
+                        <img *ngIf="childOfChildMenuItem.icon.includes('/')" src="{{childOfChildMenuItem.icon}}" />
+                        <span class="title">{{l(childOfChildMenuItem.name)}}</span>
+                      </a>
+                      <a href="javascript:;" class="auto" *ngIf="childOfChildMenuItem.items.length">
+                        <!--<i class="{{childOfChildMenuItem.icon}}"></i>-->
+                        <i *ngIf="!childOfChildMenuItem.icon.includes('/')" class="{{childOfChildMenuItem.icon}}"></i>
+                        <img *ngIf="childOfChildMenuItem.icon.includes('/')" src="{{childOfChildMenuItem.icon}}" />
+                        <span class="title">{{l(childOfChildMenuItem.name)}}</span>
+                        <span class="arrow"></span>
+                      </a>
+                      <ul class="sub-menu" *ngIf="childOfChildMenuItem.items.length">
+                        <!-- Menu Level 4 -->
+                        <ng-template ngFor let-childOfChildOfChildMenuItem [ngForOf]="childOfChildMenuItem.items" let-childOfChildMenuItemIndex="index">
+                          <li *ngIf="showMenuItem(childOfChildOfChildMenuItem)" routerLinkActive="active" [ngClass]="{'start': childOfChildMenuItemIndex == 0}">
+                            <a [routerLink]="[childOfChildOfChildMenuItem.route]">
+                              <!--<i class="{{childOfChildOfChildMenuItem.icon}}"></i>-->
+                              <i *ngIf="!childOfChildMenuItem.icon.includes('/')" class="{{childOfChildMenuItem.icon}}"></i>
+                              <img *ngIf="childOfChildMenuItem.icon.includes('/')" src="{{childOfChildMenuItem.icon}}" />
+                              <span class="title">{{l(childOfChildOfChildMenuItem.name)}}</span>
+                            </a>
+                          </li>
+                        </ng-template>
+                      </ul>
+                    </li>
+                  </ng-template>
+                </ul>
+              </li>
+            </ng-template>
+          </ul>
+        </li>
+      </ng-template>
+    </ul>
+    <div class="page-sidebar-user">
+      <div class="btn-group dropup">
+        <a class="btn btn-link btn-block dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <!--<img class="img-circle" src="../assets/layouts/layout4/img/avatar1.jpg" alt="Jason M.">  Hello, Jason M.-->
+          <!--<span class="username username-hide-on-mobile">
+              <i *ngIf="isImpersonatedLogin" class="icon-action-undo font-red-sunglo"></i>
+              {{shownLoginName}}
+          </span>-->
+          <img *ngIf="profilePicture" id="HeaderProfilePicture" class="img-circle" [src]="profilePicture" alt="Jason M.">          Hello,
+            <i *ngIf="isImpersonatedLogin" class="icon-action-undo font-red-sunglo"></i> {{shownLoginName}}
+        </a>
+        <!--<ul class="dropdown-menu">
+          <li *ngIf="isImpersonatedLogin">
+            <a (click)="backToMyAccount()"><i class="icon-action-undo"></i> <strong>{{l("BackToMyAccount")}}</strong></a>
+          </li>
+          <li *ngIf="isImpersonatedLogin" class="divider"></li>
+          <li class="dropdown-submenu">
+            <a class="open-left"><i class="icon-link"></i> {{l("LinkedAccounts")}}</a>
+            <ul id="RecentlyUsedLinkedUsers" class="dropdown-menu" style="" *ngIf="recentlyLinkedUsers">
+              <li *ngFor="let linkedUser of recentlyLinkedUsers">
+                <a (click)="switchToLinkedUser(linkedUser)" class="recently-linked-user">
+                  {{getShownUserName(linkedUser)}}
+                </a>
+              </li>
+              <li>
+                <a (click)="showLinkedAccounts()">
+                  <i class="icon-settings"></i> {{l("ManageAccounts")}}
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="ac-password">
+            <a id="UserProfileChangePasswordLink" (click)="changePassword()"><i class="icon-key"></i> {{l("ChangePassword")}}</a>
+          </li>
+          <li>
+            <a id="ShowLoginAttemptsLink" (click)="showLoginAttempts()"><i class="icon-shield"></i> {{l("LoginAttempts")}}</a>
+          </li>
+          <li>
+            <a id="UserProfileChangePictureLink" (click)="changeProfilePicture()"><i class="icon-user"></i> {{l("ChangeProfilePicture")}}</a>
+          </li>
+          <li>
+            <a id="UserProfileMySettingsLink" (click)="changeMySettings()"><i class="icon-settings"></i> {{l("MySettings")}}</a>
+          </li>
+          <li class="divider"></li>
+          <li class="ac-signout">
+            <a href="javascript:;" (click)="logout()"><i class="icon-logout"></i> {{l("Logout")}}</a>
+          </li>
+          <!--<li class="ac-profile"><a href="#">My Profile</a></li>
+          <li class="ac-password"><a href="#">Change Password</a></li>
+          <li class="ac-signout"><a href="#">Signout</a></li>
+          <li role="separator" class="divider"></li>
+          <li class="ac-help"><a href="#">Help</a></li>-->
+        </ul>-->
+      </div>
+    </div>
+  </div>
+</div>
+<loginAttemptsModal #loginAttemptsModal></loginAttemptsModal>
+<linkedAccountsModal #linkedAccountsModal (modalClose)="getRecentlyLinkedUsers()"></linkedAccountsModal>
+<changePasswordModal #changePasswordModal></changePasswordModal>
+<changeProfilePictureModal #changeProfilePictureModal></changeProfilePictureModal>
+<mySettingsModal #mySettingsModal (modalSave)="onMySettingsModalSaved()"></mySettingsModal>
+<notificationSettingsModal #notificationSettingsModal></notificationSettingsModal>

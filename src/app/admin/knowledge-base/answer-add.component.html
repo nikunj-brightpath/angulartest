@@ -1,0 +1,258 @@
+<!-- <div id="qrtKnldgeBaseAddAns" class="qrt">
+    <div class="qrt-wrapper">
+        <div class="qrt-content">
+            <form class="form-savvy" name="answerAddForm" #answerAddForm="ngForm">
+                <div class="qrt-header">
+                    <a href="javascript:;" class="pull-right" data-toggle="qrt" data-target="#qrtKnldgeBaseAddAns" (click)="toggleSideBars('qrtKnldgeBaseAddAns')"><i class="fa fa-remove"></i></a>                    Add Answer
+                </div>
+                <div class="qrt-body">
+
+                    <div class="form-group has-error">
+                        <label for="inputKBQue">Enter Question</label>
+                        <div class="input-group input-group-kb">
+                            <input type="text" class="form-control" id="inputKBQue" [(ngModel)]="createIntentInput.utterance" name="utterance" #question="ngModel"
+                                required>
+                            <span class="help-block" *ngIf="question.errors && question.errors.required && (question.dirty || question.touched)">
+							    Please enter question
+                             </span>
+                            <span class="input-group-btn" style="padding-left:12px;">
+                                    <button class="btn btn-icon-only btn-link" type="button" data-toggle="collapse" data-target="#collapseAltQue" aria-expanded="false" aria-controls="collapseAltQue" data-popover="kb-popover" data-trigger="hover" data-placement="left" data-container="body">
+                                        <img src="../assets/layouts/layout4/img/icon/add-text-notes_24.png">
+                                        </button>
+                                    <div class="kb-popover">
+                                        <div class="content">
+                                            Make Savvy smarter, add an alternate way to ask this question.
+                                        </div>
+                                    </div>
+                                  </span>
+                        </div>
+                        <div class="collapse" id="collapseAltQue">
+
+                            <div class="input-group input-group-kb">
+                                <input type="text" class="form-control" name="test">
+                                <span class="input-group-btn">
+                                        <button class="btn btn-icon-only btn-link" type="button" data-toggle="collapse" data-target="#collapseAltQue" aria-expanded="false" aria-controls="collapseAltQue">
+                                            <img src="../assets/layouts/layout4/img/icon/remove_24.png" style="height:18px">
+                                        </button>
+                                      </span>
+                            </div>
+                            <div class="input-group input-group-kb">
+                                <input type="text" class="form-control" name="test2">
+                                <span class="input-group-btn">
+                                        <button class="btn btn-icon-only btn-link" type="button" data-toggle="collapse" data-target="#collapseAltQue" aria-expanded="false" aria-controls="collapseAltQue"><img src="../assets/layouts/layout4/img/icon/remove_24.png" style="height:18px"></button>
+                                      </span>
+                            </div>
+
+                        </div>
+
+                        <div class="clearfix" style="margin-top:15px;margin-left:12px">
+                            <h4 class="text-normal" style="color:#879287">Related Questions</h4>
+                            <div class="list-group list-related-que">
+                                <a class="list-group-item">Q: Do I need to file a state return?</a>
+                                
+                                <a href="#" class="list-group-item">Q: Do I need to file a federal return this year?</a>
+                                
+                                <a href="#" class="list-group-item" data-popover="kb-popover" data-trigger="hover" data-placement="left">Q: Do I need to file my own taxes if I'm a dependent?</a>
+                                <div class="kb-popover">
+                                    <div class="head">Click to duplicate Question and Answer</div>
+                                    <div class="content">
+                                        <p>Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis
+                                            nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit
+                                            in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla
+                                            facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent
+                                            luptatum zzril delenit augue duis dolore te feugait nulla facilisi. </p>
+                                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
+                                            tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+                                        <p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat,
+                                            vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto
+                                            odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore
+                                            te feugait nulla facilisi. </p>
+                                    </div>
+                                </div>
+                                <div class="collapse" id="collapseShowAll">
+                                    <a href="#" class="list-group-item" data-popover="kb-popover" data-trigger="hover" data-placement="left">Q: Do I need to file a state return?</a>
+                                    <div class="kb-popover">
+                                        <div class="head">Click to duplicate Question and Answer</div>
+                                        <div class="content">
+                                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh
+                                                euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+                                            <p>Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit
+                                                lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure
+                                                dolor in hendrerit in vulputate velit esse molestie consequat, vel illum
+                                                dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio
+                                                dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te
+                                                feugait nulla facilisi. </p>
+                                            <p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie
+                                                consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan
+                                                et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue
+                                                duis dolore te feugait nulla facilisi. </p>
+                                        </div>
+                                    </div>
+                                    <a href="#" class="list-group-item" data-popover="kb-popover" data-trigger="hover" data-placement="left">Q: Do I need to file a federal return this year?</a>
+                                    <div class="kb-popover">
+                                        <div class="head">Click to duplicate Question and Answer</div>
+                                        <div class="content">
+                                            <p>Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit
+                                                lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure
+                                                dolor in hendrerit in vulputate velit esse molestie consequat, vel illum
+                                                dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio
+                                                dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te
+                                                feugait nulla facilisi. </p>
+                                            <p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie
+                                                consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan
+                                                et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue
+                                                duis dolore te feugait nulla facilisi. </p>
+                                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh
+                                                euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+                                        </div>
+                                    </div>
+                                    <a href="#" class="list-group-item" data-popover="kb-popover" data-trigger="hover" data-placement="left">Q: Do I need to file my own taxes if I'm a dependent?</a>
+                                    <div class="kb-popover">
+                                        <div class="head">Click to duplicate Question and Answer</div>
+                                        <div class="content">
+                                            <p>Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit
+                                                lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure
+                                                dolor in hendrerit in vulputate velit esse molestie consequat, vel illum
+                                                dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio
+                                                dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te
+                                                feugait nulla facilisi. </p>
+                                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh
+                                                euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+                                            <p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie
+                                                consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan
+                                                et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue
+                                                duis dolore te feugait nulla facilisi. </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a class="pull-right" role="button" data-toggle="collapse" href="#collapseShowAll" aria-expanded="false" aria-controls="collapseShowAll">
+                                <em>Show All Duplicates</em>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="form-group has-error">
+                        <label for="inputKBAns">Enter Answer</label>
+                        <textarea class="form-control" id="inputKBAns" style="height:300px" name="answer" [(ngModel)]="createIntentInput.answer"
+                            #answer="ngModel" required style="display:none;"></textarea>
+
+                        <simple-tiny [elementId]="'my-editor-id'" (onEditorKeyup)="setTinyMceContent($event)" (onEditorFocus)="setTinyMceFocused()"
+                            #simpleTiny>
+                        </simple-tiny>
+
+                        <span class="help-block" *ngIf="answer.errors && answer.errors.required && isTinyMceFocused">
+							    Please enter answer
+                        </span>
+                    </div>
+
+                </div>
+                <div class="qrt-footer">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <button type="submit" class="btn btn-block btn-lg green-jungle" (click)="saveAnswers(true)" [disabled]="!answerAddForm.form.valid || saving">Add More</button>
+                        </div>
+                        <div class="col-xs-6">
+                            <button type="button" class="btn btn-block btn-lg btn-outline grey-salsa" [disabled]="!answerAddForm.form.valid || saving"
+                                (click)="saveAnswers(false)">Save &amp; Close</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+-->
+
+<aside id="s-add-answer" class="sidebar custom-sidebar">
+                <div class="card-header">
+                    <button type="button" class="close palette-purplec-400 text" data-ma-action="sidebar-close"><span aria-hidden="true">×</span></button>
+                    <h3 class="palette-purplec-400 text">Add Q&A</h3>
+                </div>
+                <div class="card-body card-padding">
+                    <form role="form" class="form-savvy">
+                        <div class="form-group fg-line m-b-20">
+                            <label class="palette-Grey-900 text f-16">QUESTION</label>
+                            <div class="input-group">
+                                <div class="fg-line">
+                                    <input type="text" class="form-control input-sm m-t-10 palette-Grey-600 text f-16" id="inputquestion" value=" How to file a state return?  ">
+                                </div>
+                                <span class="input-group-addon last" data-toggle="tooltip" data-placement="bottom" data-trigger="hover" title="Make Savvy smarter, add an alternate way to ask this question."><a href="javascript:;" id="add-questbtn"><img src="img/icon/add-text-notes.png"></a></span>
+                            </div>
+                            <ul class="list-unstyled m-t-20 question-list">
+                                <li class="f-16 lgi-text text p-l-15">What are the steps to file a state return? <button type="button" class="close palette-purplec-400 text"><span aria-hidden="true">×</span></button></li>
+                                <li class="f-16 lgi-text text p-l-15">What is the process of filing a return? <button type="button" class="close palette-purplec-400 text"><span aria-hidden="true">×</span></button></li>
+                            </ul>
+                        </div>
+                        <div class="form-group fg-line p-l-15 hidden" id="addNewQuestion">
+                            <div class="input-group">
+                                <div class="fg-line">
+                                    <input type="text" class="form-control input-sm m-t-10 palette-Grey-600 text f-16" id="inputquestion" value=" How to file a state return?  ">
+                                </div>
+                                <span class="input-group-addon last" data-toggle="tooltip" data-placement="bottom" data-trigger="hover" title="Make Savvy smarter, add an alternate way to ask this question."><a href="javascript:;" class="save-QuestBtn"><img src="img/icon/add-text-notes.png"></a></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="related-que m-t-20">
+                                <h4 class="palette-Grey-600 text p-l-15 f-16"><strong>Related Questions</strong></h4>
+                                <ul>
+                                    <li><a href="#" class="f-16 palette-Cyan-600 text clickable-popover" data-popover="kb-popover" data-placement="bottom"> Do I need to file a state return?</a>
+                                    <div class="kb-popover">
+                                        <div class="head"><a data-user-alert="sua-notifications" data-ma-action="sidebar-open" data-ma-target="duplicate-QuestAnswer" class="c-gray cursor-pt">Click to duplicate Question and Answer</a></div>
+                                        <div class="content"><br>
+                                            <p>If you're getting a small refund from your state, you may be tempted not to file, especially if it costs more to file your state than what you'd get back from them. </p>
+                                            <p>If you're getting a small refund from your state, you may be tempted not to file, especially if it costs more to file your state than what you'd get back from them. However, this decision can come back to haunt you later. State tax law – not your refund amount – determines whether or not you're required to file. </p>
+                                            <p>Many states require that you file a state tax. </p>
+                                        </div>
+                                    </div><!--/popover-->
+                                    </li>
+                                    <li><a href="#" class="f-16 palette-Cyan-600 text clickable-popover" data-popover="kb-popover" data-placement="bottom"> Do I need to file a federal return this year?</a>
+                                    <div class="kb-popover">
+                                        <div class="head"><a data-user-alert="sua-notifications" data-ma-action="sidebar-open" data-ma-target="duplicate-QuestAnswer" class="c-gray cursor-pt">Click to duplicate Question and Answer</a></div>
+                                        <div class="content"><br>
+                                            <p>If you're getting a small refund from your state, you may be tempted not to file, especially if it costs more to file your state than what you'd get back from them. </p>
+                                            <p>If you're getting a small refund from your state, you may be tempted not to file, especially if it costs more to file your state than what you'd get back from them. However, this decision can come back to haunt you later. State tax law – not your refund amount – determines whether or not you're required to file. </p>
+                                            <p>Many states require that you file a state tax. </p>
+                                        </div>
+                                    </div><!--/popover-->
+                                    </li>
+                                    <li><a href="#" class="f-16 palette-Cyan-600 text clickable-popover" data-popover="kb-popover" data-placement="bottom"> Do I need to file my own taxes if I'm a dependent?</a>
+                                    <div class="kb-popover">
+                                        <div class="head"><a data-user-alert="sua-notifications" data-ma-action="sidebar-open" data-ma-target="duplicate-QuestAnswer" class="c-gray cursor-pt">Click to duplicate Question and Answer</a></div>
+                                        <div class="content"><br>
+                                            <p>If you're getting a small refund from your state, you may be tempted not to file, especially if it costs more to file your state than what you'd get back from them. </p>
+                                            <p>If you're getting a small refund from your state, you may be tempted not to file, especially if it costs more to file your state than what you'd get back from them. However, this decision can come back to haunt you later. State tax law – not your refund amount – determines whether or not you're required to file. </p>
+                                            <p>Many states require that you file a state tax. </p>
+                                        </div>
+                                    </div><!--/popover-->
+                                    </li>
+                                    <li class="f-16 palette-Cyan-600 text click-show">Do I need to file a state return?</li>
+                                    <li class="f-16 palette-Cyan-600 text click-show">Do I need to file a federal return this year?</li>
+                                    <li class="f-16 palette-Cyan-600 text click-show">Do I need to file my own taxes if I'm a dependent?</li>
+                                    <li class="f-16 palette-Cyan-600 text click-show">Do I need to file a state return?</li>
+                                    <li class="f-16 palette-Cyan-600 text click-show">Do I need to file a federal return this year?</li>
+                                    <li class="f-16 palette-Cyan-600 text click-show">Do I need to file my own taxes if I'm a dependent?</li>
+                                    <li class="f-16 palette-Cyan-600 text click-show">Do I need to file a state return?</li>
+                                    <li class="f-16 palette-Cyan-600 text click-show">Do I need to file a federal return this year?</li>
+                                    <li class="f-16 palette-Cyan-600 text click-show">Do I need to file my own taxes if I'm a dependent?</li>
+                                    <li class="f-16 palette-Cyan-600 text click-show">Do I need to file a state return?</li>
+                                    <li class="f-16 palette-Cyan-600 text click-show">Do I need to file a federal return this year?</li>
+                                    <li class="f-16 palette-Cyan-600 text click-show">Do I need to file my own taxes if I'm a dependent?</li>
+                                </ul>
+                                <a href="javascript:;" id="showAll" class="pull-right f-16 palette-Grey-600 text">Show All Duplicates</a>
+                                <a href="javascript:;" id="hideAll" class="pull-right f-16 palette-Grey-600 text">Show Less</a>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group fg-line">
+                            <label class="palette-Grey-900 text f-16">ANSWER</label>
+                            <div class="html-editor"></div>
+                        </div>
+                    </form>
+                </div>
+                <div class="card-footer bgm-white">
+                    <div class="row m-l-20 m-r-20">
+                        <div class="col-xs-6"><button type="button" class="btn btn-link btn-block btn-lg custom-btn btn-purple answer-create-alert" data-type="inverse" data-from="top" data-align="center" data-icon="fa fa-check">Add More</button></div>
+                        <div class="col-xs-6"><button type="button" class="btn btn-link btn-lg btn-block custom-btn btn-gray answer-create-alert" data-type="inverse" data-from="top" data-align="center" data-icon="fa fa-check">Save & Close</button></div>
+                    </div>
+                </div>
+            </aside>

@@ -1,0 +1,125 @@
+﻿<!-- BEGIN REGISTRATION FORM -->
+<div class="user-login-5" [busyIf]="saving">
+    <div class="row bs-reset">
+        <div class="col-md-6 bs-reset mt-login-5-bsfix">
+            <div class="login-bg" style="background:#e6ffef !important;">
+                <img class="login-logo img-responsive" src="/assets/common/images/monitor.jpg" />
+            </div>
+        </div>
+        <div class="col-md-6 login-container bs-reset mt-login-5-bsfix">
+            <div class="login-content" style="padding-left:120px;padding-right:120px;">
+                <form #registerForm="ngForm" class="register-form" action="index.html" method="post" (submit)="save()">
+
+                    <h3 class="font-green-jungle text-center sbold" style="color:#1bd67b !important">Sign Up</h3>
+                    <div class="clearfix">&nbsp;</div>
+                    <div class="form-group" *ngIf="showCompanyNameTextbox">
+                        <label class="control-label visible-ie8 visible-ie9">Company Name</label>
+                        <div class="input-icon">
+                            <i class="fa fa-building-o"></i>
+                            <input class="form-control placeholder-no-fix" type="text" placeholder="Company Name" name="companyname" [(ngModel)]="model.companyName"
+                                required #companyName="ngModel" />
+                            <span class="help-block" *ngIf="companyName.errors && (companyName.dirty || companyName.touched)">
+							    Please enter company name
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-group" [ngClass]="{'has-error': emailAddress.errors &&(emailAddress.dirty || emailAddress.touched)}">
+                        <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
+                        <label class="control-label visible-ie8 visible-ie9">Email Address</label>
+                        <div class="input-icon">
+                            <i class="icon-envelope"></i>
+                            <input class="form-control placeholder-no-fix" type="email" placeholder="Email Address" [(ngModel)]="model.emailAddress"
+                                name="email" required maxlength="256" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{1,})+$"
+                                #emailAddress="ngModel" />
+                            <span class="help-block" *ngIf="emailAddress.errors&&emailAddress.errors.pattern && (emailAddress.dirty || emailAddress.touched)">
+							    Please enter valid email address
+                            </span>
+                            <span class="help-block" *ngIf="emailAddress.errors&&emailAddress.errors.required && (emailAddress.dirty || emailAddress.touched)">
+							    Please enter email address
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-group" [ngClass]="{'has-error': phoneNumber.errors &&(phoneNumber.dirty || phoneNumber.touched)}">
+                        <label class="control-label visible-ie8 visible-ie9">Phone Number</label>
+                        <div class="input-icon">
+                            <i class="fa fa-phone"></i>
+                            <input class="form-control placeholder-no-fix" type="text" placeholder="Phone Number" [(ngModel)]="model.phoneNumber" maxlength="24"
+                                name="phone" pattern="^[\+\d]+(?:[\d-.\s()]*)$" #phoneNumber="ngModel" />
+                            <span class="help-block" *ngIf="phoneNumber.errors&&phoneNumber.errors.pattern && (phoneNumber.dirty || phoneNumber.touched)">
+							    Please enter valid phone
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-group" [ngClass]="{'has-error': userName.errors &&(userName.dirty || userName.touched)}">
+                        <label class="control-label visible-ie8 visible-ie9">Username</label>
+                        <div class="input-icon">
+                            <i class="icon-user"></i>
+                            <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="Username" [(ngModel)]="model.userName"
+                                name="username" required #userName="ngModel" />
+                            <span class="help-block" *ngIf="userName.errors && (userName.dirty || userName.touched)">
+                                You must enter username
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-group" [ngClass]="{'has-error': Password.errors &&(Password.dirty || Password.touched)}">
+                        <label class="control-label visible-ie8 visible-ie9">Password</label>
+                        <div class="input-icon">
+                            <i class="icon-lock"></i>
+                            <input class="form-control placeholder-no-fix" type="password" autocomplete="off" 
+                              placeholder="Password" #Password="ngModel"  validateEqual="PasswordRepeat"  [(ngModel)]="model.password" reverse="true" [minlength]="passwordComplexitySetting.minLength"
+                                [maxlength]="passwordComplexitySetting.maxLength" name="Password" [useNumbers]="passwordComplexitySetting.useNumbers"
+                                [useUpperCaseLetters]="passwordComplexitySetting.useUpperCaseLetters" [useLowerCaseLetters]="passwordComplexitySetting.useLowerCaseLetters"
+                                [usePunctuations]="passwordComplexitySetting.usePunctuations" required/>
+                            <ul class="help-block text-danger" style="list-style-type: none;margin:0;padding:0;" *ngIf="Password.errors && (Password.touched || Password.dirty)">
+                                <li [hidden]="!Password.errors.minlength">{{l("PasswordComplexity_MinLength_Hint",passwordComplexitySetting.minLength)}}</li>
+                                <li [hidden]="!Password.errors.maxLenght">{{l("PasswordComplexity_MaxLength_Hint",passwordComplexitySetting.maxLength)}}</li>
+                                <li [hidden]="!Password.errors.useUpperCaseLetters">{{l("PasswordComplexity_UseUpperCaseLetters_Hint")}}</li>
+                                <li [hidden]="!Password.errors.useLowerCaseLetters">{{l("PasswordComplexity_UseLowerCaseLetters_Hint")}}</li>
+                                <li [hidden]="!Password.errors.useNumbers">{{l("PasswordComplexity_UseNumbers_Hint")}}</li>
+                                <li [hidden]="!Password.errors.usePunctuations">{{l("PasswordComplexity_UsePunctuations_Hint")}}</li>
+                                <li [hidden]="!Password.errors.required">Please enter password</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="form-group" [ngClass]="{'has-error': PasswordRepeat.errors &&(PasswordRepeat.dirty || PasswordRepeat.touched)}">
+                        <label class="control-label visible-ie8 visible-ie9">Confirm Password</label>
+                        <div class="input-icon">
+                            <i class="icon-lock"></i>
+                            <input class="form-control placeholder-no-fix" type="password" validateEqual="Password" [(ngModel)]="model.passwordRepeat" autocomplete="off" 
+                            placeholder="Confirm Password"   name="PasswordRepeat"  reverse="false" required #PasswordRepeat="ngModel"
+                            />
+                            <span class="help-block" *ngIf="PasswordRepeat.errors && !PasswordRepeat.errors.validateEqual && (PasswordRepeat.dirty || PasswordRepeat.touched)">
+						 	    Password and new password must match
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" id="register-submit-btn" class="btn green-jungle btn-block btn-lg pull-right" [disabled]="!registerForm.form.valid || saving">
+                             Get Started
+                        </button>
+                        <div class="space5"></div>
+                        <p class="text-center">Already a member? <a href="javascript:;" routerLink="/account/login" id="register-back-btn">Login here</a></p>
+
+                    </div>
+                    <!--<div class="form-actions">
+                        <button id="register-back-btn" type="button" class="btn grey-salsa btn-outline"  routerLink="/account/login" > Back </button>
+                        <button type="submit" id="register-submit-btn" class="btn green-jungle pull-right"  novalidate > Get Started </button>
+                    </div>-->
+                </form>
+            </div>
+
+            <div class="login-footer">
+                <div class="row bs-reset">
+                    <div class="col-xs-12 bs-reset">
+                        <div class="text-center">
+
+                            <p>Copyright &copy; Savvy 2017</p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END REGISTRATION FORM -->

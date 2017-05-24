@@ -1,0 +1,145 @@
+﻿<!--<div id="qrtAddUser" class="qrt" [busyIf]="saving">
+    <div class="qrt-wrapper">
+        <div class="qrt-content">
+            <form class="form-savvy" name="addEditUserForm" [formGroup]="userForm" novalidate>
+                <div class="qrt-header">
+                    <a href="javascript:;" class="pull-right" (click)="toggleSideBars('qrtAddUser')"><i class="fa fa-remove"></i></a>
+                    <span *ngIf="user.id">{{l("EditUser")}}</span>
+                    <span *ngIf="!user.id">{{l("CreateNewUser")}}</span>
+                </div>
+                <div class="qrt-body">
+                    <div class="form-group has-error">
+                        <label for="inputFirstName">First Name</label>
+                        <input type="text" class="form-control" id="inputFirstName" [(ngModel)]="user.name" placeholder="" name="firstName" maxlength="32"
+                            formControlName="name">
+                        <span class="help-block" *ngIf="userForm.controls['name'].hasError('required') && userForm.controls['name'].touched">
+                            You must enter first name
+                        </span>
+                    </div>
+                    <div class="form-group has-error">
+                        <label for="inputFullName">Last Name</label>
+                        <input type="text" class="form-control" id="inputSurName" [(ngModel)]="user.surname" placeholder="" name="lastName" maxlength="32"
+                            formControlName="surname">
+                        <span class="help-block" *ngIf="userForm.controls['surname'].hasError('required') && userForm.controls['surname'].touched">
+                            You must enter last name
+                        </span>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPhoneNo">Phone No</label>
+                        <input type="text" class="form-control" id="inputPhoneNo" placeholder="" [(ngModel)]="user.phoneNumber" name="phoneNumber"
+                            [ngModelOptions]="{standalone: true}">
+                    </div>
+                    <div class="form-group">
+                        <label>Role </label><br>
+                        <label class="radio-inline" *ngFor="let role of roles">
+                            <input type="radio" name="roleRadioGroup"   [value]="role.name" [(ngModel)]="selectRoleNmae"  [ngModelOptions]="{standalone: true}"> {{role.displayName}}
+                        </label>
+                    </div>
+                    <div class="form-group has-error">
+                        <label for="inputEmail">Email address</label>
+                        <input type="email" class="form-control" id="inputEmail" placeholder="" [(ngModel)]="user.emailAddress" name="emailAddress"
+                            formControlName="emailAddress">
+
+                        <span class="help-block" *ngIf="userForm.controls['emailAddress'].hasError('required') && userForm.controls['emailAddress'].touched">
+                            You must enter email
+                        </span>
+                        <span class="help-block" *ngIf="!userForm.controls['emailAddress'].hasError('required') && userForm.controls['emailAddress'].hasError('email') && userForm.controls['emailAddress'].touched">
+                            You must enter valid email format
+                        </span>
+                    </div>
+                    <div class="form-group has-error">
+                        <label for="inputPassword">Password</label>
+                        <input type="password" class="form-control" id="inputPassword" placeholder="" [(ngModel)]="user.password" maxlength="32"
+                            minlength="6" name="password" formControlName="password">
+                        <span class="help-block" *ngIf="userForm.controls['password'].hasError('required') && userForm.controls['password'].touched">
+                            You must enter password
+                        </span>
+                    </div>
+                    <div class="form-group has-error">
+                        <label for="inputConfirmPassword">Confirm Password </label>
+                        <input type="password" class="form-control" id="inputConfirmPassword" placeholder="" [(ngModel)]="user.passwordRepeat" maxlength="32"
+                            minlength="6" name="confirmPassword" formControlName="confirmPassword">
+                        <span class="help-block" *ngIf="userForm.controls['confirmPassword'].hasError('required') && userForm.controls['confirmPassword'].touched">
+                            You must enter repeat password
+                        </span>
+                        <span class="help-block" *ngIf="userForm.controls.confirmPassword.touched && userForm.hasError('mismatchedPasswords')"> 
+                            Passwords do not match
+                        </span>
+                    </div>
+                </div>
+                <div class="qrt-footer">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <button type="submit" (click)="save(true)" class="btn btn-block btn-lg green-jungle" [disabled]="!userForm.valid" [buttonBusy]="saving"
+                                [busyText]="l('SavingWithThreeDot')">Add More</button>
+                        </div>
+                        <div class="col-xs-6">
+                            <button type="button" (click)="save(false)" class="btn btn-block btn-lg btn-outline grey-salsa" [disabled]="!userForm.valid"
+                                [buttonBusy]="saving" [busyText]="l('SavingWithThreeDot')">Save &amp; Close</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+-->
+
+
+<aside id="s-add-user" class="sidebar custom-sidebar">
+    <div class="card-header">
+        <button type="button" class="close palette-purplec-400 text" data-ma-action="sidebar-close" openSideBar><span aria-hidden="true">×</span></button>
+        <h3 class="palette-purplec-400 text">Add User</h3>
+    </div>
+    <div class="card-body card-padding">
+        <form role="form" class="form-savvy">
+            <div class="form-group fg-line">
+                <label class="palette-Grey-900 text f-16 control-label ">FULL NAME</label>
+                <input type="text" class="form-control input-sm m-t-10 palette-Grey-600 text f-16" id="inputfullname">
+                <span class="zmdi zmdi-close form-control-feedback hide"></span>
+            </div>
+            <div class="form-group fg-line p-t-20">
+                <label class="palette-Grey-900 control-label text f-16">PHONE NO</label>
+                <input type="text" class="form-control input-sm m-t-10 palette-Grey-600 text f-16" id="inputphoneno">
+                <span class="zmdi zmdi-close form-control-feedback hide"></span>
+            </div>
+            <div class="form-group fg-line p-t-20">
+                <label class="palette-Grey-900 control-label text f-16">ROLE</label><br>
+                <label class="radio radio-inline m-r-20 m-t-10 palette-Grey-600 text f-16">
+                                <input type="radio" name="role1" value="option1">
+                                <i class="input-helper"></i>
+                                Admin
+                            </label>
+                <label class="radio radio-inline m-r-20 m-t-10 palette-Grey-600 text f-16">
+                                <input type="radio" name="role2" value="option2">
+                                <i class="input-helper"></i>
+                                Agent
+                            </label>
+            </div>
+            <div class="form-group fg-line p-t-20">
+                <label class="palette-Grey-900 control-label text f-16">EMAIL ADDRESS</label>
+                <input type="email" class="form-control input-sm m-t-10 palette-Grey-600 text f-16" id="inputemail">
+                <span class="zmdi zmdi-close form-control-feedback hide"></span>
+            </div>
+            <div class="form-group fg-line p-t-20">
+                <label class="palette-Grey-900 text control-label f-16">PASSWORD</label>
+                <input type="password" class="form-control input-sm m-t-10 palette-Grey-600 text f-16" id="inputpassword">
+                <span class="zmdi zmdi-close form-control-feedback hide"></span>
+            </div>
+            <div class="form-group fg-line p-t-20">
+                <label class="palette-Grey-900 text f-16 control-label">CONFIRM PASSWORD</label>
+                <input type="password" class="form-control input-sm m-t-10 palette-Grey-600 text f-16" id="inputpassword">
+                <span class="zmdi zmdi-close form-control-feedback hide"></span>
+            </div>
+        </form>
+    </div>
+    <div class="card-footer bgm-white">
+        <div class="row m-l-20 m-r-20">
+            <div class="col-xs-6"><a class="btn btn-link btn-block btn-lg custom-btn btn-purple adduser-create-alert waves-effect" data-type="inverse"
+                    data-from="top" data-align="center" data-icon="fa fa-check" (click)="testGrowl()">Create</a></div>
+            <div class="col-xs-6"><button type="button" class="btn btn-link btn-lg btn-block custom-btn btn-gray waves-effect">Cancel</button></div>
+        </div>
+    </div>
+</aside>
+
+<notify #notificationDirective [type]="'inverse'" [from]="'top'" [align]="'center'" [icon]="'fa fa-check'"></notify>

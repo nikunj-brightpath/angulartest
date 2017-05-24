@@ -1,0 +1,44 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup Label="Globals">
+    <SccProjectName>SAK</SccProjectName>
+    <SccProvider>SAK</SccProvider>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp1.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="assets\**" />
+    <Compile Remove="dist\**" />
+    <Compile Remove="external_libs\**" />
+    <Compile Remove="node_modules\**" />
+    <EmbeddedResource Remove="assets\**" />
+    <EmbeddedResource Remove="dist\**" />
+    <EmbeddedResource Remove="external_libs\**" />
+    <EmbeddedResource Remove="node_modules\**" />
+    <None Remove="assets\**" />
+    <None Remove="dist\**" />
+    <None Remove="external_libs\**" />
+    <None Remove="node_modules\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove=".editorconfig" />
+    <None Remove=".gitignore" />
+    <None Remove="npm-shrinkwrap.json" />
+    <None Remove="yarn.lock" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="node_modules\abp-web-resources\Abp\Framework\scripts\libs\abp.toastr.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="bootstrap-fileinput" Version="4.3.9" />
+  </ItemGroup>
+
+</Project>

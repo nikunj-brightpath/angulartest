@@ -1,0 +1,95 @@
+<div id="qrtMyProfile" class="qrt" style="z-index: 10;">
+    <div class="qrt-wrapper">
+        <div class="qrt-content">
+            <form class="form-savvy" #myProfileForm="ngForm" (ngSubmit)="save()">
+                <div class="qrt-header">
+                    <a href="javascript:;" class="pull-right" data-toggle="qrt" data-target="#qrtMyProfile" (click)="closeMyProfile()"><i class="fa fa-remove"></i></a>                    My Profile
+                </div>
+                <div class="qrt-body">
+                    <div class="form-group">
+                        <label>Company Name</label><br>
+                        <p class="form-control-static">{{user.companyName}}</p>
+                    </div>
+                    <div class="form-group">
+                        <label>Role</label><br>
+                        <p class="form-control-static">{{allRoles}}</p>
+                    </div>
+                    <div class="form-group has-error">
+                        <label for="inputEmail">Email address</label>
+                        <input type="email" class="form-control" id="inputEmail" [(ngModel)]="user.emailAddress" required maxlength="256" name="EmailAddress"
+                            #emailAddress="ngModel">
+                        <span class="help-block" *ngIf="emailAddress.errors && (emailAddress.dirty || emailAddress.touched)">
+							Please enter email address
+                        </span>
+                    </div>
+                    <div class="form-group has-error">
+                        <label for="inputFirstName">First Name</label>
+                        <input type="text" class="form-control" id="inputFirstName" [(ngModel)]="user.name" required maxlength="32" name="Name" required
+                            #firstName="ngModel">
+                        <span class="help-block" *ngIf="firstName.errors && (firstName.dirty || firstName.touched)">
+							Please enter first name
+                        </span>
+                    </div>
+                    <div class="form-group has-error">
+                        <label for="inputLastName">Last Name</label>
+                        <input type="text" class="form-control" id="inputLastName" [(ngModel)]="user.surname" required maxlength="32" name="Surname"
+                            required #lastName="ngModel">
+                        <span class="help-block" *ngIf="lastName.errors && (lastName.dirty || lastName.touched)">
+							Please enter last name
+                        </span>
+                    </div>
+                    <div class="form-group has-error">
+                        <label for="inputPhoneNo">Phone No</label>
+                        <input type="text" class="form-control" id="inputPhoneNo" [(ngModel)]="user.phoneNumber" maxlength="24" name="PhoneNumber"
+                            required #phoneNo="ngModel">
+                        <span class="help-block" *ngIf="phoneNo.errors && (phoneNo.dirty || phoneNo.touched)">
+							Please enter phone number
+                        </span>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputProfilePic">Profile Picture</label>
+                        <div class="clearfix"></div>
+                        <div class="fileinput fileinput-new" data-provides="fileinput" style="position: relative;">
+
+                            <div class="fileinput-new thumbnail" style="width: 150px; height: 150px;border-radius: 50%;padding:0">
+                                <img *ngIf="profilePicture" id="HeaderProfilePicture" class="img-circle" [src]="profilePicture" alt="Jason M." style="width: 100%;">
+                            </div>
+                            <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 150px; max-height: 150px;border-radius: 50%;padding:0">
+                            </div>
+                            <div style="position: absolute;top:0;left: 100px">
+                                <span class="btn btn-icon-only btn-circle green-jungle btn-file">
+                                    <span class="fileinput-new" (click)="changeProfilePicture()" *ngIf="profileExist==false" > 
+                                        <i class="fa fa-plus"></i> 
+                                    </span>
+                                <span class="fileinput-exists" [style.display]="profileExist==true?'inherit':'none'" (click)="changeProfilePicture()"> 
+                                        <i class="fa fa-pencil"></i> 
+                                    </span>
+                                </span>
+                                <div class="space5"></div>
+                                <a href="javascript:;" class="btn btn-icon-only btn-circle red fileinput-exists" [style.display]="profileExist==true?'inherit':'none'">
+                                    <i class="fa fa-remove"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="qrt-footer">
+
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <button type="submit" class="btn btn-block btn-lg green-jungle" [disabled]="!myProfileForm.form.valid || saving">Save changes</button>
+                        </div>
+                        <div class="col-xs-6">
+                            <button type="button" class="btn btn-block btn-lg btn-outline grey-salsa" data-toggle="qrt" [disabled]="saving" data-target="#qrtMyProfile"
+                                (click)="hideProfile()">Cancel</button>
+                        </div>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!--/qrtMyProfile-->
+<changeProfilePictureModal #changeProfilePictureModal></changeProfilePictureModal>

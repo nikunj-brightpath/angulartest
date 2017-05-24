@@ -1,0 +1,220 @@
+﻿<!--<div class="user-login-5" [busyIf]="saving">
+    <div class="row bs-reset">
+        <div class="col-md-6 bs-reset mt-login-5-bsfix">
+            <div class="login-bg" style="background:#e6ffef !important;">
+                <img class="login-logo img-responsive" src="/assets/common/images/monitor.jpg" />
+            </div>
+        </div>
+        <div class="col-md-6 login-container bs-reset mt-login-5-bsfix">
+            <div class="login-content" style="padding-left:120px;padding-right:120px;">
+
+                <form #registerForm="ngForm" role="form" class="login-form" novalidate (submit)="save()">
+                    <h3 class="font-green-jungle text-center sbold" style="color:#1bd67b !important">Sign Up</h3>
+                    <div class="clearfix">&nbsp;</div>
+                    <div class="form-group">
+                        <label class="control-label visible-ie8 visible-ie9">{{l("TenancyName")}}</label>
+                        <input #tenancyName="ngModel" class="form-control placeholder-no-fix" autoFocus type="text" placeholder="{{l('TenancyName')}}"
+                            [(ngModel)]="model.tenancyName" name="tenancyName" required maxlength="64" pattern="^[a-zA-Z][a-zA-Z0-9_-]{1,}$"
+                        />
+                        <span class="help-block text-danger" *ngIf="tenancyName.errors && tenancyName.errors.required  && (tenancyName.dirty || tenancyName.touched)">
+							Please enter tenancy name
+                        </span>
+                        <span class="help-block text-danger" *ngIf="tenancyName.errors && tenancyName.errors.pattern  && (tenancyName.dirty || tenancyName.touched)">
+                            {{l("TenantName_Regex_Description")}}
+                        </span>
+
+                    </div>
+
+                    <div class="form-group has-error">
+                        <label class="control-label visible-ie8 visible-ie9">{{l("Name")}}</label>
+                        <input class="form-control placeholder-no-fix" type="text" placeholder="{{l('Name')}}" [(ngModel)]="model.name" name="Name"
+                            required maxlength="128" #name="ngModel" />
+
+                        <span class="help-block" *ngIf="name.errors && (name.dirty || name.touched)">
+							Please enter name
+                        </span>
+                    </div>
+
+                    <p class="hint">
+                        {{l("AccountSettings")}}
+                    </p>
+
+                    <div class="form-group has-error">
+                        <label class="control-label visible-ie8 visible-ie9">{{l("AdminEmailAddress")}}</label>
+                        <input class="form-control placeholder-no-fix" type="email" placeholder="{{l('AdminEmailAddress')}}" [(ngModel)]="model.adminEmailAddress"
+                            name="adminEmailAddress" required maxlength="256" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{1,})+$"
+                            #adminEmailAddress="ngModel" />
+
+                        <span class="help-block" *ngIf="adminEmailAddress.errors && adminEmailAddress.errors.required && (adminEmailAddress.dirty || adminEmailAddress.touched)">
+							Please enter email address
+                        </span>
+                        <span class="help-block" *ngIf="adminEmailAddress.errors && adminEmailAddress.errors.pattern && (adminEmailAddress.dirty || adminEmailAddress.touched)">
+							Please enter valid email format
+                        </span>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label visible-ie8 visible-ie9">{{l("AdminPassword")}}</label>
+                        <input type="password" name="Password" class="form-control" [(ngModel)]="model.adminPassword" #Password="ngModel" placeholder="{{l('AdminPassword')}}"
+                            validateEqual="PasswordRepeat" reverse="true" [minlength]="passwordComplexitySetting.minLength" [useNumbers]="passwordComplexitySetting.useNumbers"
+                            [useUpperCaseLetters]="passwordComplexitySetting.useUpperCaseLetters" [useLowerCaseLetters]="passwordComplexitySetting.useLowerCaseLetters"
+                            [usePunctuations]="passwordComplexitySetting.usePunctuations" required>
+
+                        <ul class="help-block text-danger" style="list-style-type: none;margin:0;padding:0;" *ngIf="Password.errors && (Password.touched || Password.dirty)">
+                            <li [hidden]="!Password.errors.minlength">{{l("PasswordComplexity_MinLength_Hint",passwordComplexitySetting.minLength)}}</li>
+                            <li [hidden]="!Password.errors.maxLenght">{{l("PasswordComplexity_MaxLength_Hint",passwordComplexitySetting.maxLength)}}</li>
+                            <li [hidden]="!Password.errors.useUpperCaseLetters">{{l("PasswordComplexity_UseUpperCaseLetters_Hint")}}</li>
+                            <li [hidden]="!Password.errors.useLowerCaseLetters">{{l("PasswordComplexity_UseLowerCaseLetters_Hint")}}</li>
+                            <li [hidden]="!Password.errors.useNumbers">{{l("PasswordComplexity_UseNumbers_Hint")}}</li>
+                            <li [hidden]="!Password.errors.usePunctuations">{{l("PasswordComplexity_UsePunctuations_Hint")}}</li>
+                            <li [hidden]="!Password.errors.required">Please enter password</li>
+                        </ul>
+                    </div>
+                    <div class="form-group has-error">
+                        <label class="control-label visible-ie8 visible-ie9">{{l("PasswordRepeat")}}</label>
+                        <input type="password" name="PasswordRepeat" class="form-control" [ngModel]="model.passwordRepeat" placeholder="{{l('PasswordRepeat')}}"
+                            validateEqual="Password" reverse="false" required #PasswordRepeat="ngModel">
+
+                        <span class="help-block" *ngIf="PasswordRepeat.errors && (PasswordRepeat.dirty || PasswordRepeat.touched)">
+							Password and confirm password must match
+                        </span>
+                    </div>
+                    <p *ngIf="useCaptcha" class="hint">
+                        {{l("Captha_Hint")}}
+                    </p>
+                    <div *ngIf="useCaptcha" class="form-group margin-bottom-20">
+                        <recaptcha (resolved)="captchaResolved($event)" siteKey="6LfD-wUTAAAAACULAVXvL61K0w02RIsjhI8EyiS-"></recaptcha>
+                    </div>
+
+                    <div class="form-actions">
+                        <button [disabled]="saving" routerLink="/account/login" type="button" class="btn btn-default"><i class="fa fa-arrow-left"></i> {{l("Back")}}</button>
+                        <button type="submit" class="btn btn-success uppercase" [disabled]="!registerForm.form.valid" [buttonBusy]="saving" [busyText]="l('SavingWithThreeDot')"><i class="fa fa-check"></i> {{l("Submit")}}</button>
+                    </div>
+                </form>
+            </div>
+
+
+            <div class="login-footer">
+                <div class="row bs-reset">
+                    <div class="col-xs-12 bs-reset">
+                        <div class="text-center">
+                            <p>Copyright &copy; Savvy 2017</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>-->
+
+
+<div class="lb-header">
+    <div class="login-img palette-Blue-Grey-700 bg p-absolute">
+        <img class="p-relative" src="/assets/layouts/layout4/img/icon/joyful.png">
+    </div>
+    <h3 class="palette-purplec-400 text p-relative text-center">Sign Up</h3>
+</div>
+
+
+<div class="lb-body">
+    <form #registerForm="ngForm" role="form" class="login-form" novalidate (submit)="save()">
+
+        <div class="form-group fg-float">
+            <div class="fg-line">
+                <input type="text" class="input-sm form-control fg-input f-16 subtext-color" #tenancyName="ngModel" [(ngModel)]="model.tenancyName"
+                    name="tenancyName" required maxlength="64" pattern="^[a-zA-Z][a-zA-Z0-9_-]{1,}$" floatingLabel>
+                <!--<label class="fg-label">{{l('TenancyName')}}</label>-->
+                <label class="fg-label">Company Name</label>
+            </div>
+            <span class="c-red" *ngIf="tenancyName.errors && tenancyName.errors.required  && (tenancyName.dirty || tenancyName.touched)">
+				Please enter tenancy name
+            </span>
+            <span class="c-red" *ngIf="tenancyName.errors && tenancyName.errors.pattern  && (tenancyName.dirty || tenancyName.touched)">
+                {{l("TenantName_Regex_Description")}}
+            </span>
+        </div>
+
+        <div class="form-group fg-float">
+            <div class="fg-line">
+                <input type="text" class="input-sm form-control fg-input f-16 subtext-color" [(ngModel)]="model.name" name="Name" required
+                    maxlength="128" #name="ngModel" floatingLabel>
+                <!--<label class="fg-label">{{l("Name")}}</label>-->
+                <label class="fg-label">Full Name(first last)</label>
+            </div>
+            <span class="c-red" *ngIf="name.errors && (name.dirty || name.touched)">
+				Please enter name
+            </span>
+        </div>
+
+        <div class="form-group fg-float">
+            <div class="fg-line">
+                <input type="text" class="input-sm form-control fg-input f-16 subtext-color" [(ngModel)]="model.adminEmailAddress" name="adminEmailAddress"
+                    required maxlength="256" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{1,})+$" #adminEmailAddress="ngModel"
+                    floatingLabel>
+                <!--<label class="fg-label">{{l("AdminEmailAddress")}}</label>-->
+                <label class="fg-label">Email Address</label>
+            </div>
+            <span class="c-red" *ngIf="adminEmailAddress.errors && adminEmailAddress.errors.required && (adminEmailAddress.dirty || adminEmailAddress.touched)">
+				Please enter email address
+            </span>
+            <span class="c-red" *ngIf="adminEmailAddress.errors && adminEmailAddress.errors.pattern && (adminEmailAddress.dirty || adminEmailAddress.touched)">
+			    Please enter valid email format
+            </span>
+        </div>
+
+        <div class="form-group fg-float">
+            <div class="fg-line">
+                <input type="password" class="input-sm form-control fg-input" name="Password" [(ngModel)]="model.adminPassword" #Password="ngModel"
+                    validateEqual="PasswordRepeat" reverse="true" [minlength]="passwordComplexitySetting.minLength" [useNumbers]="passwordComplexitySetting.useNumbers"
+                    [useUpperCaseLetters]="passwordComplexitySetting.useUpperCaseLetters" [useLowerCaseLetters]="passwordComplexitySetting.useLowerCaseLetters"
+                    [usePunctuations]="passwordComplexitySetting.usePunctuations" required floatingLabel>
+                <label class="fg-label">Password</label>
+            </div>
+
+            <ul class="c-red" style="list-style-type: none;margin:0;padding:0;" *ngIf="Password.errors && (Password.touched || Password.dirty)">
+                <li [hidden]="!Password.errors.minlength">{{l("PasswordComplexity_MinLength_Hint",passwordComplexitySetting.minLength)}}</li>
+                <li [hidden]="!Password.errors.maxLenght">{{l("PasswordComplexity_MaxLength_Hint",passwordComplexitySetting.maxLength)}}</li>
+                <li [hidden]="!Password.errors.useUpperCaseLetters">{{l("PasswordComplexity_UseUpperCaseLetters_Hint")}}</li>
+                <li [hidden]="!Password.errors.useLowerCaseLetters">{{l("PasswordComplexity_UseLowerCaseLetters_Hint")}}</li>
+                <li [hidden]="!Password.errors.useNumbers">{{l("PasswordComplexity_UseNumbers_Hint")}}</li>
+                <li [hidden]="!Password.errors.usePunctuations">{{l("PasswordComplexity_UsePunctuations_Hint")}}</li>
+                <li [hidden]="!Password.errors.required">Please enter password</li>
+            </ul>
+        </div>
+
+        <div class="form-group fg-float">
+            <div class="fg-line">
+                <input type="password" class="input-sm form-control fg-input" [ngModel]="model.passwordRepeat" validateEqual="Password" reverse="false"
+                    required #PasswordRepeat="ngModel" floatingLabel name="edition">
+                <label class="fg-label">Confirm Password</label>
+            </div>
+            <span class="c-red" *ngIf="PasswordRepeat.errors && (PasswordRepeat.dirty || PasswordRepeat.touched)">
+			    Password and confirm password must match
+            </span>
+        </div>
+
+        <div class="form-group">
+            <div class="fg-line">
+                <div class="select">
+                    <select class="form-control">
+                                    <option>Edition</option>
+                                    <option>Free</option>
+                                    <option>Standard</option>
+                                    <option>Business</option>
+                                </select>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="useCaptcha" class="form-group margin-bottom-20">
+            <recaptcha (resolved)="captchaResolved($event)" siteKey="6LfD-wUTAAAAACULAVXvL61K0w02RIsjhI8EyiS-"></recaptcha>
+        </div>
+        <button class="btn palette-purplec-400 bg btn-outline-purple f-16 w-100 m-t-15" waveBtnRound="false" [disabled]="!registerForm.form.valid"
+            [buttonBusy]="saving" [busyText]="l('SavingWithThreeDot')">Get Started</button>
+    </form>
+    <div class="m-t-30 text-center">
+        <p class="f-14">Already have a company?<a data-block="#l-login" data-bg="themepurple" class="palette-purplec-400 text m-b-5 p-l-10"
+                href="" animateBlockDirective>Sign In</a></p>
+    </div>
+
+</div>

@@ -1,0 +1,205 @@
+/* here you can put your own css to customize and override the theme */
+
+/*  GRID  */
+.grid {
+	clear: both;
+	padding: 0px;
+	margin: 0px;
+}
+
+/*  COLUMN SETUP  */
+.col {
+	display: block;
+	float:left;
+	margin: 0 0 1% 1.6%;
+}
+.col:first-child { margin-left: 0; }
+
+/*  GROUPING  */
+.grid-group:before,
+.grid-group:after { content:""; display:table; }
+.grid-group:after { clear:both;}
+.grid-group { zoom:1; /* For IE 6/7 */ }
+
+/*  GRID OF FIVE  */
+.span_5_of_5 {
+	width: 100%;
+}
+.span_4_of_5 {
+	width: 79.68%;
+}
+.span_3_of_5 {
+	width: 59.36%;
+}
+.span_2_of_5 {
+	width: 39.04%;
+}
+.span_1_of_5 {
+	width: 18.72%;
+}
+
+/*  GO FULL WIDTH BELOW 480 PIXELS */
+@media only screen and (max-width: 480px) {
+	.col {  margin: 1% 0 1% 0%; }
+	.span_1_of_5, .span_2_of_5, .span_3_of_5, .span_4_of_5, .span_5_of_5 { width: 100%; }
+}
+
+.page-container {
+	padding:0 20px;
+}
+.page-footer { 
+	padding:0 20px !important;
+}
+.page-header-fixed .page-container {
+    margin-top: 0;
+}
+.page-sidebar-fixed .page-sidebar {
+    top: 10px;
+    bottom:0px;   
+}
+
+/* Theme Green */
+.bg-green-jungle {
+  background: #1bd67b !important; }
+
+.bg-green-jungle-opacity {
+  background: rgba(38, 194, 129, 0.8) !important; }
+
+.bg-hover-green-jungle:hover {
+  background: #1bd67b !important; }
+
+.font-green-jungle {
+  color: #1bd67b !important; }
+
+.bg-font-green-jungle {
+  color: #FFFFFF !important; }
+
+.border-green-jungle {
+  border-color: #1bd67b !important; }
+
+.btn.green-jungle:not(.btn-outline) {
+	color: #FFFFFF;
+	background-color: #1bd67b !important;
+	border-color: #1bd67b !important; 
+}
+
+
+/* Sidebar Search */
+.page-sidebar .sidebar-search, 
+.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .sidebar-search {
+    padding: 0;
+    margin: 22px 18px 22px 18px; 
+}
+.page-sidebar .sidebar-search .remove,
+.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .sidebar-search .remove {
+	display: none; 
+}
+.page-sidebar .sidebar-search .remove > i,
+.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .sidebar-search .remove > i {
+	font-size: 16px; 
+}
+.page-sidebar .sidebar-search .input-group,
+.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .sidebar-search .input-group {
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	-ms-border-radius: 4px;
+	-o-border-radius: 4px;
+	border-radius: 4px; 
+}
+.page-sidebar .sidebar-search .input-group .form-control,
+.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .sidebar-search .input-group .form-control {
+	font-size: 14px;
+	padding: 0;
+	height: auto;
+	line-height: auto;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	-ms-border-radius: 4px;
+	-o-border-radius: 4px;
+	border-radius: 4px; 
+}
+.page-sidebar .sidebar-search .input-group .input-group-btn .btn,
+.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .sidebar-search .input-group .input-group-btn .btn {
+	border:1px solid #ccc;
+	padding-left: 2px;
+	padding-right: 2px;
+	height:33px;
+	background-repeat: no-repeat;
+	background-position: 100% 3px; 
+	box-shadow: none;
+}
+.page-sidebar .sidebar-search .input-group .input-group-btn .btn > i,
+.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .sidebar-search .input-group .input-group-btn .btn > i {
+	font-size: 15px;
+}
+.page-sidebar .sidebar-search.sidebar-search-bordered,
+.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .sidebar-search.sidebar-search-bordered {
+	margin: 25px 18px 25px 18px; 
+}
+.page-sidebar .sidebar-search.sidebar-search-bordered .input-group .form-control,
+.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .sidebar-search.sidebar-search-bordered .input-group .form-control {
+	font-size: 13px;
+	padding: 6px 8px;
+	border-right:0px;
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
+}
+.page-sidebar .sidebar-search.sidebar-search-bordered .input-group .input-group-btn .btn,
+.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .sidebar-search.sidebar-search-bordered .input-group .input-group-btn .btn {
+	margin-right: 6px; 
+	border-top-right-radius: 4px;
+	border-bottom-right-radius: 4px;
+}
+.page-sidebar .page-sidebar-menu > li > a > .title {
+	padding-left:8px;
+}
+.page-sidebar .page-sidebar-menu .sub-menu li > a > .title {
+	padding-left:15px;	
+}
+.page-sidebar .page-sidebar-menu > li > a > .title, 
+.page-sidebar .page-sidebar-menu .sub-menu li > a > .title {
+	font-weight: 600;
+}
+.page-sidebar .page-sidebar-menu > li > a {
+	margin-left: 3px;
+}
+.page-sidebar .page-sidebar-menu > li.active > a {
+    border-left: 3px solid #1bd67b !important;
+    margin-left: 0;
+}
+.page-sidebar .page-sidebar-menu > li:hover > a,
+.page-sidebar .page-sidebar-menu > li.active.open > a, 
+.page-sidebar .page-sidebar-menu > li.active > a, 
+.page-sidebar .page-sidebar-menu .sub-menu > li.active > a, 
+.page-sidebar .page-sidebar-menu .sub-menu > li.open > a, 
+.page-sidebar .page-sidebar-menu .sub-menu > li:hover > a {
+	color:#1bd67b;
+}
+.page-sidebar .page-sidebar-menu > li.active.open > a, 
+.page-sidebar .page-sidebar-menu > li.active > a {
+
+}
+.page-sidebar .page-sidebar-menu .sub-menu > li.active > a, 
+.page-sidebar .page-sidebar-menu .sub-menu > li.open > a {
+	background: #fafafa !important;
+}
+
+.grid-tiles .thumbnail {
+	box-shadow: 0 1px 3px rgba(0,0,0,.1),0 1px 2px rgba(0,0,0,.18);
+	box-sizing: border-box;
+	border-color:transparent;
+	padding:35px 15px;
+	text-align: center;
+	text-decoration: none;
+	color:#6b706e;
+}
+.grid-tiles .thumbnail .number, 
+.grid-tiles .thumbnail .fa {
+	font-size: 3em !important;
+	line-height: 60px !important;
+	font-weight: 600;
+}
+.grid-tiles .thumbnail .desc {
+	text-transform: uppercase;
+	font-weight: 600;
+}
